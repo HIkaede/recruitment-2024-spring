@@ -16,7 +16,7 @@ void optimized_post_phase2() {}
 
 void optimized_do_phase1(float *data, size_t size)
 {
-    const size_t bnum = std::min((size_t)16, size);
+    const size_t bnum = std::min((size_t)127, size);
 
     float min_val = std::numeric_limits<float>::max();
     float max_val = std::numeric_limits<float>::lowest();
