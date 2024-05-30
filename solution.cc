@@ -4,8 +4,6 @@
 #include <vector>
 #include <algorithm>
 #include <limits>
-#include <cmath>
-#include <unordered_map>
 #include <omp.h>
 
 void optimized_pre_phase1(size_t) {}
@@ -19,18 +17,7 @@ void optimized_post_phase2() {}
 void optimized_do_phase1(float *data, size_t size)
 {
     const size_t bnum = std::min((size_t)16, size);
-    // Using "-Og" acceleration
-    // std::qsort   1.021
-    // std::sort    2.064
-    // 8            2.845
-    // 10           3.497
-    // 12           3.384
-    // 16           3.279
-    // 32           3.185
-    // 64           3.278
-    // 100          3.343
-    // 1000         3.320
-    // 10000        3.019
+
     float min_val = std::numeric_limits<float>::max();
     float max_val = std::numeric_limits<float>::lowest();
     for (size_t i = 0; i < size; i++)
